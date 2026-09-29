@@ -115,8 +115,6 @@ Genotype coverage is strongly structured. Numerous markers across the genome hav
 ```{r}
 #| label: fig-map
 #| fig-cap: "Original genetic map across the 19 autosomes and X chromosome."
-#| fig-width: 12
-#| fig-height: 7
 
 plotMap(
   hyper,
