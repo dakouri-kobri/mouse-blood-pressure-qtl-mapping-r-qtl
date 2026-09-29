@@ -38,3 +38,17 @@ nmar(hyper)
 **Observations**
 
 The `hyper` dataset is a backcross of 250 mice with two phenotypes, both recorded for all individuals. It contains 174 markers across 19 autosomes and the X chromosome. Marker coverage varies by chromosome, and only 47.7% of the possible genotype observations are present. The autosomal genotype classes are nearly balanced (BB: 50.1%; BA: 49.9%). The extent and pattern of missing genotype data warrant closer inspection in the plots below.
+
+```{r}
+#| label: Plotting helper function
+
+save_plot <- function(filename, draw, width = 10, height = 7) {
+  pdf(
+    file = file.path("results", "plots", filename),
+    width = width,
+    height = height
+  )
+  on.exit(dev.off(), add = TRUE)
+  draw()
+}
+```
