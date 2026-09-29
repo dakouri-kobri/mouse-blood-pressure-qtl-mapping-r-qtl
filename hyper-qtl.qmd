@@ -14,3 +14,9 @@ editor: visual
 
 library(qtl)
 ```
+
+## 2. Load data
+
+```{r}
+data(hyper, package = "qtl")
+```
