@@ -280,7 +280,7 @@ data.frame(
 )
 ```
 
-## 2. Recombination fractions and the genetic map
+## 4. Recombination fractions and the genetic map
 
 ```{r}
 #| label: estimate-recombination
