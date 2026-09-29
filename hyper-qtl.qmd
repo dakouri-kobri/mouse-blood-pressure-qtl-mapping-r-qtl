@@ -262,3 +262,20 @@ hyper$geno[["15"]]$map
 **Observations**
 
 On chromosome 1, D1Mit46 and D1Mit132 both map to 43.7 cM, while D1Mit14, D1Mit105, D1Mit159, and D1Mit267 all map to 82.0 cM. On chromosome 15, D15Mit11 and D15Mit175 both map to 5.5 cM; D15Mit56 and D15Mit22 map to 16.4 cM; and D15Mit206 and D15Mit152 map to 17.5 cM. Their labels overlap because they share map positions, rather than because the plots are too narrow.
+
+**Remove the marker without genotype data**
+
+```{r}
+#| label: remove-null-markers
+
+markers_before <- totmar(hyper)
+
+hyper <- drop.nullmarkers(hyper)
+
+markers_after <- totmar(hyper)
+
+data.frame(
+  stage = c("Before", "After"),
+  markers = c(markers_before, markers_after)
+)
+```
