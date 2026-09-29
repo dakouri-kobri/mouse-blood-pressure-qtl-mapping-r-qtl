@@ -147,3 +147,14 @@ plotPheno(
 **Observations**
 
 Blood pressure varies continuously across the 250 mice, from approximately 82 to 128 in the plotted values. Most observations fall between about 90 and 110, with the highest frequencies around 94–100 and 104–106. Only a few mice have values below 88 or above 120. The distribution has no clear separation into distinct groups, making blood pressure suitable for the quantitative QTL analysis that follows.
+
+**Distribution of mice by sex**
+
+```{r}
+#| label: fig-sex
+#| fig-cap: "Distribution of mice by sex."
+#| fig-width: 7
+#| fig-height: 5
+
+plotPheno(hyper, pheno.col = "sex")
+```
