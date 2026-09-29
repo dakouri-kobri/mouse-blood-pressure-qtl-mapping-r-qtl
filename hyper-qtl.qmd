@@ -288,7 +288,7 @@ data.frame(
 hyper_est <- est.rf(hyper)
 ```
 
-**Recombination pattern on all chromosomes**
+**Recombination pattern on all chromosomes (Whole-genome recombination)**
 
 ```{r}
 #| label: fig-recombination-all
@@ -298,6 +298,10 @@ hyper_est <- est.rf(hyper)
 
 plotRF(hyper_est, cex = 1.5)
 ```
+
+**Observations**
+
+The clear blocks along the diagonal show stronger linkage between markers on the same chromosome. Most comparisons between chromosomes show weaker linkage. The irregular stripes within some chromosome blocks indicate that the pairwise estimates are not equally consistent throughout the genome.
 
 **Recombination pattern on chromosomes 1 and 4**
 
@@ -334,6 +338,10 @@ mtext("Marker index", side = 2, line = 3, cex = 1.3)
 par(old_par)
 ```
 
+**Observations**
+
+The two chromosomes form distinct linkage blocks. Within each chromosome, nearby markers generally show lower recombination fractions and stronger linkage than more distant markers. Comparisons between chromosomes 1 and 4 mostly show weak linkage. The patchy colors and gray cells indicate uneven information for some marker pairs; gray cells represent unavailable estimates, rather than evidence of absent linkage.
+
 **Recombination patterns on chromosome 6**
 
 ```{r}
@@ -348,6 +356,10 @@ plotRF(
 )
 ```
 
+**Observations**
+
+Marker 10 (D6Mit201) shows unusually high estimated recombination fractions with several chromosome 6 markers, including nearby markers 8 and 11, visible as dark purple cells above the diagonal. This interrupts the brighter pattern generally seen between neighboring markers. The worksheet attributes this unusual pattern to selective genotyping: marker 10 was typed primarily in individuals showing recombination in the surrounding interval, which can inflate its estimated recombination fractions.
+
 **Missing genotype pattern on chromosome 6**
 
 ```{r}
@@ -360,3 +372,7 @@ plotMissing(
   main = "Missing genotype pattern on chromosome 6"
 )
 ```
+
+**Observations**
+
+Marker 10 was genotyped in only a small, scattered subset of individuals. Markers 2, 3, 5, 7, and 9 also have extensive missing data, whereas markers 1, 4, 6, 8, and 11 have much more complete coverage.
