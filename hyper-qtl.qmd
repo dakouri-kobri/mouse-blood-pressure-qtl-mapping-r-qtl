@@ -96,3 +96,18 @@ print(marker_coverage[marker_coverage$genotyped <= 100, ])
 **Observations**
 
 Genotype coverage is strongly structured. Numerous markers across the genome have observations for exactly 92 of the 250 mice and are missing for the other 158, producing the broad horizontal boundary in the plot. Coverage is even lower at selected markers: `D15Mit175` on chromosome 15 is typed in 13 mice, `D5Mit61` on chromosome 5 in 15, and `D4Mit53` and `D4Mit89` on chromosome 4 in 20 each. The chromosome 14 marker `D14Mit48` has no observed genotypes at all (0/250). Thus, missingness varies both among groups of mice and among individual markers; `D14Mit48` can be removed before subsequent analyses.
+
+**Genetic map across**
+
+```{r}
+#| label: fig-map
+#| fig-cap: "Original genetic map across the 19 autosomes and X chromosome."
+#| fig-width: 12
+#| fig-height: 7
+
+plotMap(hyper)
+```
+
+**Observations**
+
+The original genetic map places 174 markers across chromosomes 1–19 and X. Each horizontal tick represents a marker position in centimorgans (cM). Chromosome 1 has the longest plotted span, approximately 0–112 cM, while chromosome 18 spans only about 0–35 cM. Marker spacing is uneven: several markers cluster around 15–35 cM on chromosome 4 and near 0–10 cM on chromosome 17, whereas other intervals have relatively few markers. This plot shows their mapped positions, but it does not show how many mice were successfully genotyped at each marker.
