@@ -347,3 +347,16 @@ plotRF(
   main = "Pairwise linkage between markers on chromosome 6"
 )
 ```
+
+**Missing genotype pattern on chromosome 6**
+
+```{r}
+#| label: fig-missing-6
+#| fig-cap: "Missing genotype pattern on chromosome 6."
+
+plotMissing(
+  hyper, 
+  chr = 6,
+  main = "Missing genotype pattern on chromosome 6"
+)
+```
