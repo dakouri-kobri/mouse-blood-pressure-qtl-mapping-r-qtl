@@ -298,3 +298,38 @@ hyper_est <- est.rf(hyper)
 
 plotRF(hyper_est)
 ```
+
+**Recombination pattern on chromosomes 1 and 4**
+
+```{r, fig.width=9, fig.height=9}
+#| label: fig-recombination-1-4
+
+#| fig-cap: "Pairwise recombination fractions and linkage LOD scores for chromosomes 1 and 4."
+#| echo: false
+#| out-width: "100%"
+#| fig-align: center
+
+old_par <- par(
+  ann = FALSE,
+  mar = c(5, 5, 5, 5) + 0.1,
+  pty = "s"
+)
+
+plotRF(
+  hyper_est,
+  chr = c(1, 4),
+  what = "both",
+  main = ""
+)
+
+mtext(
+  "Pairwise linkage: chromosomes 1 and 4",
+  side = 3, line = 3,
+  font = 2, cex = 1.5
+)
+
+mtext("Marker index", side = 1, line = 3, cex = 1.3)
+mtext("Marker index", side = 2, line = 3, cex = 1.3)
+
+par(old_par)
+```
