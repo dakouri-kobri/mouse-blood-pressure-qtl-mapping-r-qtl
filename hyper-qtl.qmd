@@ -279,3 +279,22 @@ data.frame(
   markers = c(markers_before, markers_after)
 )
 ```
+
+## 2. Recombination fractions and the genetic map
+
+```{r}
+#| label: estimate-recombination
+
+hyper_est <- est.rf(hyper)
+```
+
+**Recombination pattern on all chromosomes**
+
+```{r}
+#| label: fig-recombination-all
+#| fig-cap: "Pairwise recombination fractions and associated LOD scores."
+#| fig-width: 11
+#| fig-height: 10
+
+plotRF(hyper_est)
+```
