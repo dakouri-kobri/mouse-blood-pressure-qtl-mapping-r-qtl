@@ -124,7 +124,7 @@ plotMap(
 
 **Observations**
 
-The original genetic map places 174 markers across chromosomes 1–19 and X. Each horizontal tick represents a marker position in centimorgans (cM). Chromosome 1 has the longest plotted span, approximately 0–112 cM, while chromosome 18 spans only about 0–35 cM. Marker spacing is uneven: several markers cluster around 15–35 cM on chromosome 4 and near 0–10 cM on chromosome 17, whereas other intervals have relatively few markers. This plot shows their mapped positions, but it does not show how many mice were successfully genotyped at each marker.
+The original genetic map places 174 markers across chromosomes 1–19 and X. Each horizontal tick represents a marker position in centimorgans (cM). Chromosome 1 has the longest plotted span, approximately 3–116 cM, while chromosome 18 spans only about 0–35 cM. Marker spacing is uneven: several markers cluster around 15–35 cM on chromosome 4 and near 0–10 cM on chromosome 17, whereas other intervals have relatively few markers. This plot shows their mapped positions, but it does not show how many mice were successfully genotyped at each marker.
 
 **Distribution of blood pressure in the 250 mice**
 
@@ -166,3 +166,99 @@ plotPheno(
 **Observations**
 
 All 250 individuals in the `hyper` cross are recorded as male; none are recorded as female. Sex therefore does not vary in this dataset, so it cannot be used to compare blood pressure between males and females.
+
+**Marker names on selected chromosomes**
+
+```{r}
+#| label: fig-selected-markers
+#| fig-cap: "Marker names on selected chromosomes."
+#| fig-width: 12
+#| fig-height: 9
+
+plotMap(
+  hyper,
+  chr = c(1, 4, 6, 7, 15),
+  show.marker.names = TRUE
+)
+```
+
+```{r}
+#| label: fig-chr4-markers
+#| fig-cap: "Marker positions on chromosome 1."
+#| fig-width: 8
+#| fig-height: 12
+
+plotMap(
+  hyper,
+  chr = 1,
+  show.marker.names = TRUE,
+  main = "Genetic map of chromosome 1"
+)
+```
+
+```{r}
+#| label: fig-chr4-markers
+#| fig-cap: "Marker positions on chromosome 4."
+#| fig-width: 8
+#| fig-height: 12
+
+plotMap(
+  hyper,
+  chr = 4,
+  show.marker.names = TRUE,
+  main = "Genetic map of chromosome 4"
+)
+```
+
+```{r}
+#| label: fig-chr4-markers
+#| fig-cap: "Marker positions on chromosome 6."
+#| fig-width: 8
+#| fig-height: 12
+
+plotMap(
+  hyper,
+  chr = 6,
+  show.marker.names = TRUE,
+  main = "Genetic map of chromosome 6"
+)
+```
+
+```{r}
+#| label: fig-chr4-markers
+#| fig-cap: "Marker positions on chromosome 7."
+#| fig-width: 8
+#| fig-height: 12
+
+plotMap(
+  hyper,
+  chr = 7,
+  show.marker.names = TRUE,
+  main = "Genetic map of chromosome 7"
+)
+```
+
+```{r}
+#| label: fig-chr4-markers
+#| fig-cap: "Marker positions on chromosome 15."
+#| fig-width: 8
+#| fig-height: 12
+
+plotMap(
+  hyper,
+  chr = 15,
+  show.marker.names = TRUE,
+  main = "Genetic map of chromosome 15"
+)
+```
+
+```{r}
+#| label: marker-on-chromosme-1-chromosme-15
+
+hyper$geno[["1"]]$map
+hyper$geno[["15"]]$map
+```
+
+**Observations**
+
+On chromosome 1, D1Mit46 and D1Mit132 both map to 43.7 cM, while D1Mit14, D1Mit105, D1Mit159, and D1Mit267 all map to 82.0 cM. On chromosome 15, D15Mit11 and D15Mit175 both map to 5.5 cM; D15Mit56 and D15Mit22 map to 16.4 cM; and D15Mit206 and D15Mit152 map to 17.5 cM. Their labels overlap because they share map positions, rather than because the plots are too narrow.
