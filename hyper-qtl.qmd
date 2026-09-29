@@ -20,3 +20,21 @@ library(qtl)
 ```{r}
 data(hyper, package = "qtl")
 ```
+
+## 3. Inspect the cross
+
+```{r}
+#| label: cross-summary
+
+summary(hyper)
+
+nind(hyper)
+nphe(hyper)
+nchr(hyper)
+totmar(hyper)
+nmar(hyper)
+```
+
+**Observations**
+
+The `hyper` dataset is a backcross of 250 mice with two phenotypes, both recorded for all individuals. It contains 174 markers across 19 autosomes and the X chromosome. Marker coverage varies by chromosome, and only 47.7% of the possible genotype observations are present. The autosomal genotype classes are nearly balanced (BB: 50.1%; BA: 49.9%). The extent and pattern of missing genotype data warrant closer inspection in the plots below.
