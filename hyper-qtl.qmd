@@ -152,9 +152,19 @@ Blood pressure varies continuously across the 250 mice, from approximately 82 to
 
 ```{r}
 #| label: fig-sex
+
 #| fig-cap: "Distribution of mice by sex."
 #| fig-width: 7
 #| fig-height: 5
 
-plotPheno(hyper, pheno.col = "sex")
+plotPheno(
+  hyper,
+  pheno.col = "sex",
+  main = "Distribution of sex in the hyper cross",
+  xlab = "Sex"
+)
 ```
+
+**Observations**
+
+All 250 individuals in the `hyper` cross are recorded as male; none are recorded as female. Sex therefore does not vary in this dataset, so it cannot be used to compare blood pressure between males and females.
