@@ -367,7 +367,7 @@ Marker 10 (D6Mit201) shows unusually high estimated recombination fractions with
 #| fig-cap: "Missing genotype pattern on chromosome 6."
 
 plotMissing(
-  hyper, 
+  hyper_est, 
   chr = 6,
   main = "Missing genotype pattern on chromosome 6"
 )
@@ -376,3 +376,25 @@ plotMissing(
 **Observations**
 
 Marker 10 was genotyped in only a small, scattered subset of individuals. Markers 2, 3, 5, 7, and 9 also have extensive missing data, whereas markers 1, 4, 6, 8, and 11 have much more complete coverage.
+
+#### Estimate a new map
+
+```{r}
+#| label: estimate-map
+
+newmap <- est.map(hyper_est, error.prob = 0.01)
+```
+
+```{r}
+#| label: fig-map-comparison
+
+#| fig-cap: "Original and newly estimated genetic maps."
+#| fig-width: 12
+#| fig-height: 9
+
+plotMap(hyper_est, newmap)
+```
+
+**Observations**
+
+Re-estimating the genetic map while keeping marker order fixed changes the distances between markers. The most pronounced expansion occurs on chromosomes 6, 13, and 18: their total lengths increase approximately from 85 to 120 cM, 70 to 115 cM, and 45 to 80 cM, respectively. Chromosome 11 also expands visibly, from approximately 75 to 115 cM. The connecting lines show that changes in spacing are uneven across each chromosome.
