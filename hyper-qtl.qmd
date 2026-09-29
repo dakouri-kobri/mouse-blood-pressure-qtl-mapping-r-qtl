@@ -52,3 +52,47 @@ save_plot <- function(filename, draw, width = 10, height = 7) {
   draw()
 }
 ```
+
+**Overview of missing genotypes**
+
+```{r}
+#| label: fig-missing
+#| fig-cap: "Missing genotype observations across individuals and markers."
+#| fig-width: 13
+#| fig-height: 6
+
+plotMissing(hyper)
+```
+
+```{r}
+#| label: marker-coverage-hyper
+
+marker_coverage <- do.call(
+  rbind,
+  lapply(names(hyper$geno), function(chr) {
+    genotypes <- hyper$geno[[chr]]$data
+    
+    data.frame(
+      chromosome = chr,
+      marker = colnames(genotypes),
+      genotyped = colSums(!is.na(genotypes)),
+      missing = colSums(is.na(genotypes)),
+      row.names = NULL
+    )
+  })
+)
+
+# The marker(s) with no genotype data
+marker_coverage[marker_coverage$genotyped == 0, ]
+
+# Markers typed in at most 100 of the 250 mice
+marker_coverage[marker_coverage$genotyped <= 100, ]
+```
+
+```{r}
+print(marker_coverage[marker_coverage$genotyped <= 100, ])
+```
+
+**Observations**
+
+Genotype coverage is strongly structured. Numerous markers across the genome have observations for exactly 92 of the 250 mice and are missing for the other 158, producing the broad horizontal boundary in the plot. Coverage is even lower at selected markers: `D15Mit175` on chromosome 15 is typed in 13 mice, `D5Mit61` on chromosome 5 in 15, and `D4Mit53` and `D4Mit89` on chromosome 4 in 20 each. The chromosome 14 marker `D14Mit48` has no observed genotypes at all (0/250). Thus, missingness varies both among groups of mice and among individual markers; `D14Mit48` can be removed before subsequent analyses.
