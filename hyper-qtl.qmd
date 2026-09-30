@@ -654,3 +654,24 @@ The additive two-QTL model, fitted by multiple imputation using 250 individuals,
 The drop-one-QTL analysis shows that both loci contribute after accounting for the other. Removing Q1 on chromosome 1 at 49.2 cM reduces the model LOD by 4.69, with a reported variance contribution of 7.14% and an F-test p = 3.97 × 10⁻⁶. Removing Q2 on chromosome 4 at 29.5 cM reduces the LOD by 9.18, with a variance contribution of 14.60% and p = 1.06 × 10⁻¹⁰. Thus, chromosome 4 contributes more strongly to the joint model.
 
 These tests assess each QTL conditional on the other at the selected positions; their p-values are distinct from the genome-wide permutation-adjusted p-values in Section 7. The model includes no interaction, so this analysis does not test whether the two QTL interact.
+
+### 8.3 Estimate QTL effects
+
+```{r}
+#| label: fit-estimated-effects
+
+out.fq.effects <- fitqtl(
+  hyper_imput,
+  pheno.col = "bp",
+  qtl = qtl_model,
+  formula = additive_formula,
+  method = "imp",
+  get.ests = TRUE
+)
+
+summary(out.fq.effects)
+```
+
+**Observations and interpretation**
+
+After accounting for the other QTL, heterozygotes have an estimated mean blood pressure 4.50 mmHg lower than homozygotes at Q1 on chromosome 1 and 6.45 mmHg lower at Q2 on chromosome 4. Both effects are negative, with standard errors of approximately 0.95–0.96 mmHg. The chromosome 4 QTL has the larger estimated effect, consistent with its stronger contribution to the model in Section 8.2. Because the model contains no interaction, these genotype effects are assumed to add together. This backcross comparison does not allow additive and dominance effects to be estimated separately.
