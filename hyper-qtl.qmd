@@ -412,3 +412,19 @@ top.errorlod(hyper_err_lod)
 **Observations**
 
 The analysis flagged 128 genotype calls across 22 markers on chromosomes 1, 11, 15, 16, and 17. The highest error LOD scores occurred at D11Mit79 in individuals 152 and 144 (13.36 and 13.18), followed by D1Mit14 in individuals 118, 159, 162, and 170 (13.11 each). Several marker pairs were flagged in the same individuals; notably, D16Mit106 and D16Mit70 were both flagged in individuals 16, 23, 29, 31, 38, 40, 45, and 87. These repeated patterns indicate genotype inconsistencies that require inspection alongside neighboring markers and their map positions. High error LOD scores identify possible errors, but do not confirm incorrect calls, because genuine recombination between very tightly linked markers can also produce high scores.
+
+**Observe genotypes for selected individuals on chromosome 16**
+
+```{r}
+#| label: fig-genotypes-16
+
+#| fig-cap: "Observed genotypes for selected individuals on chromosome 16."
+#| fig-width: 12
+#| fig-height: 8
+
+plotGeno(hyper_err_lod, chr = 16, ind = c(24:34, 71:81))
+```
+
+**Observations**
+
+White circles represent AA, black circles represent AB, blue crosses indicate genotype transitions consistent with crossovers, and red squares flag possible errors above the default error LOD cutoff of 4. Individuals 29 and 31 show conflicting genotypes at D16Mit106 and D16Mit70 (identified from the above error LOD table), the two closely spaced markers near 52 cM. Both marker calls are flagged by red squares, consistent with the high error LOD scores reported in the table. These individuals have predominantly AB genotypes across the preceding markers, followed by an AA call and a return to AB at the chromosome end. This pattern implies two genotype transitions within a short interval and therefore raises suspicion of a genotyping error. However, the plot alone cannot establish which call is incorrect; genuine recombination or inaccurate marker spacing could also contribute. The other displayed individuals have no calls flagged above the cutoff.
