@@ -626,3 +626,31 @@ qtl_model
 **Observation**
 
 The initial two-QTL object contains Q1 on chromosome 1 at 49.2 cM and Q2 on chromosome 4 at 29.5 cM, using 16 genotype imputations. The requested chromosome 1 position of 48.3 cM was mapped to the nearest available imputation-grid position, 49.2 cM. These returned positions will serve as the starting points for model fitting and refinement.
+
+### 8.2 Fit the additive two-QTL model
+
+The formula includes both QTL main effects without an interaction.
+
+```{r}
+#| label: fit-additive-model
+
+additive_formula <- y ~ Q1 + Q2
+
+out.fq <- fitqtl(
+  hyper_imput,
+  pheno.col = "bp",
+  qtl = qtl_model,
+  formula = additive_formula,
+  method = "imp"
+)
+
+summary(out.fq)
+```
+
+**Observations and interpretation**
+
+The additive two-QTL model, fitted by multiple imputation using 250 individuals, has an overall LOD score of 12.67 and explains approximately 20.82% of the observed blood-pressure variance.
+
+The drop-one-QTL analysis shows that both loci contribute after accounting for the other. Removing Q1 on chromosome 1 at 49.2 cM reduces the model LOD by 4.69, with a reported variance contribution of 7.14% and an F-test p = 3.97 × 10⁻⁶. Removing Q2 on chromosome 4 at 29.5 cM reduces the LOD by 9.18, with a variance contribution of 14.60% and p = 1.06 × 10⁻¹⁰. Thus, chromosome 4 contributes more strongly to the joint model.
+
+These tests assess each QTL conditional on the other at the selected positions; their p-values are distinct from the genome-wide permutation-adjusted p-values in Section 7. The model includes no interaction, so this analysis does not test whether the two QTL interact.
