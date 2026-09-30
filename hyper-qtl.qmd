@@ -704,3 +704,25 @@ plot(revqtl)
 Refining the positions within the additive two-QTL model moved Q1 on chromosome 1 from 49.2 to 67.8 cM, while Q2 on chromosome 4 remained at 29.5 cM. This increased the overall model LOD score by 1.14. No further improvement occurred in the second iteration, indicating convergence of the refinement procedure. The genetic-map plot marks these refined locations in red.
 
 The shift in Q1 shows that its preferred position changes when chromosome 4’s QTL is included in the model, compared with the single-QTL scan. The unchanged Q2 position indicates positional consistency between these analyses. These are estimated locations on the calculation grid, rather than exact causal-gene positions.
+
+### 8.5 Refit and compare the refined model
+
+```{r}
+#| label: fit-refined-model
+
+out.fq2 <- fitqtl(
+  hyper_imput,
+  pheno.col = "bp",
+  qtl = revqtl,
+  formula = additive_formula,
+  method = "imp"
+)
+
+summary(out.fq2)
+```
+
+**Observations and interpretation**
+
+Refinement moved Q1 on chromosome 1 from 49.2 to 67.8 cM, while Q2 on chromosome 4 remained at 29.5 cM. Refitting the additive model increased its overall LOD from 12.67 to 13.81 and its variance explained from 20.82% to 22.46%, indicating an improved fit at the refined positions.
+
+Both QTL continued to contribute after accounting for the other. Removing Q1 reduced the LOD by 5.83, whereas removing Q2 reduced it by 10.73, indicating a stronger conditional contribution from the chromosome 4 QTL. These positions are estimated QTL locations rather than exact locations of causal genes. The selective genotyping described earlier also warrants caution when interpreting recombination-based map distances.
