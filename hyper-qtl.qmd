@@ -451,3 +451,20 @@ hyper_genoprob <- calc.genoprob(
 out.em <- scanone(hyper_genoprob, pheno.col = "bp", method = "em")
 out.hk <- scanone(hyper_genoprob, pheno.col = "bp", method = "hk")
 ```
+
+### 6.3 Multiple-imputation scan
+
+```{r}
+#| label: imputation-scan
+
+set.seed(20260929)
+
+hyper_imput <- sim.geno(
+  hyper_genoprob,
+  step = 2,
+  n.draws = 16,
+  error.prob = 0.01
+)
+
+out.imp <- scanone(hyper_imput, pheno.col = "bp", method = "imp")
+```
