@@ -726,3 +726,11 @@ summary(out.fq2)
 Refinement moved Q1 on chromosome 1 from 49.2 to 67.8 cM, while Q2 on chromosome 4 remained at 29.5 cM. Refitting the additive model increased its overall LOD from 12.67 to 13.81 and its variance explained from 20.82% to 22.46%, indicating an improved fit at the refined positions.
 
 Both QTL continued to contribute after accounting for the other. Removing Q1 reduced the LOD by 5.83, whereas removing Q2 reduced it by 10.73, indicating a stronger conditional contribution from the chromosome 4 QTL. These positions are estimated QTL locations rather than exact locations of causal genes. The selective genotyping described earlier also warrants caution when interpreting recombination-based map distances.
+
+## 9. Overall conclusion
+
+The analysis identified two blood-pressure QTL on chromosomes 1 and 4 that exceeded the permutation-based genome-wide 5% significance threshold of LOD 2.65. The EM, Haley–Knott, and multiple-imputation scans produced broadly consistent results, with the strongest signal on chromosome 4.
+
+Fitting both QTL together confirmed that each contributed after accounting for the other. Position refinement moved the chromosome 1 QTL from 49.2 to 67.8 cM, while the chromosome 4 QTL remained at 29.5 cM. The refined additive model achieved a LOD of 13.81 and explained 22.46% of the observed blood-pressure variation, compared with 12.67 and 20.82% for the initial model. Chromosome 4 made the larger conditional contribution.
+
+These results support two genomic regions associated with blood pressure in this backcross, but do not identify specific causal genes. Selective genotyping and flagged genotype inconsistencies complicate interpretation of the genetic map, and the estimated positions remain subject to mapping uncertainty. The additive model did not test an interaction between the QTL.
