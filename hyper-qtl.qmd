@@ -428,3 +428,17 @@ plotGeno(hyper_err_lod, chr = 16, ind = c(24:34, 71:81))
 **Observations**
 
 White circles represent AA, black circles represent AB, blue crosses indicate genotype transitions consistent with crossovers, and red squares flag possible errors above the default error LOD cutoff of 4. Individuals 29 and 31 show conflicting genotypes at D16Mit106 and D16Mit70 (identified from the above error LOD table), the two closely spaced markers near 52 cM. Both marker calls are flagged by red squares, consistent with the high error LOD scores reported in the table. These individuals have predominantly AB genotypes across the preceding markers, followed by an AA call and a return to AB at the chromosome end. This pattern implies two genotype transitions within a short interval and therefore raises suspicion of a genotyping error. However, the plot alone cannot establish which call is incorrect; genuine recombination or inaccurate marker spacing could also contribute. The other displayed individuals have no calls flagged above the cutoff.
+
+## 6. Single-QTL genome scans
+
+### 6.1 Calculate genotype probabilities
+
+```{r}
+#| label: genotype-probabilities
+
+hyper_genoprob <- calc.genoprob(
+  hyper_err_lod,
+  step = 1,
+  error.prob = 0.01
+)
+```
