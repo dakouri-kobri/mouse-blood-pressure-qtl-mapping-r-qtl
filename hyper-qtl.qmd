@@ -571,3 +571,11 @@ operm.hk <- scanone(
   n.perm = 1000
 )
 ```
+
+### 7.2 Estimate the genome-wide 5% LOD threshold
+
+```{r}
+#| label: permutation-threshold
+
+summary(operm.hk, alpha = 0.05)
+```
