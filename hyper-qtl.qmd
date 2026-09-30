@@ -579,3 +579,16 @@ operm.hk <- scanone(
 
 summary(operm.hk, alpha = 0.05)
 ```
+
+### 7.3 Identify significant peaks and report adjusted p-values
+
+```{r}
+#| label: adjusted-scan-results
+
+summary(
+  out.hk,
+  perms = operm.hk,
+  alpha = 0.05,
+  pvalues = TRUE
+)
+```
