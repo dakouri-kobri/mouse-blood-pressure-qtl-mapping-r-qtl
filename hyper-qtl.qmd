@@ -675,3 +675,32 @@ summary(out.fq.effects)
 **Observations and interpretation**
 
 After accounting for the other QTL, heterozygotes have an estimated mean blood pressure 4.50 mmHg lower than homozygotes at Q1 on chromosome 1 and 6.45 mmHg lower at Q2 on chromosome 4. Both effects are negative, with standard errors of approximately 0.95–0.96 mmHg. The chromosome 4 QTL has the larger estimated effect, consistent with its stronger contribution to the model in Section 8.2. Because the model contains no interaction, these genotype effects are assumed to add together. This backcross comparison does not allow additive and dominance effects to be estimated separately.
+
+### 8.4 Refine QTL positions
+
+```{r}
+#| label: refine-qtls
+
+revqtl <- refineqtl(
+  hyper_imput,
+  pheno.col = "bp",
+  qtl = qtl_model,
+  formula = additive_formula,
+  method = "imp"
+)
+
+revqtl
+```
+
+```{r}
+#| label: fig-refined-qtls
+#| fig-cap: "Refined QTL locations on the genetic map."
+
+plot(revqtl)
+```
+
+**Observations and interpretation**
+
+Refining the positions within the additive two-QTL model moved Q1 on chromosome 1 from 49.2 to 67.8 cM, while Q2 on chromosome 4 remained at 29.5 cM. This increased the overall model LOD score by 1.14. No further improvement occurred in the second iteration, indicating convergence of the refinement procedure. The genetic-map plot marks these refined locations in red.
+
+The shift in Q1 shows that its preferred position changes when chromosome 4’s QTL is included in the model, compared with the single-QTL scan. The unchanged Q2 position indicates positional consistency between these analyses. These are estimated locations on the calculation grid, rather than exact causal-gene positions.
