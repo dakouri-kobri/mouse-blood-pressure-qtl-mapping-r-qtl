@@ -592,3 +592,11 @@ summary(
   pvalues = TRUE
 )
 ```
+
+**Observations and interpretation**
+
+Based on 1,000 Haley–Knott permutations, the estimated genome-wide 5% significance threshold is LOD 2.65. Two chromosome peaks exceed this threshold: chromosome 1 at 48.3 cM (LOD 3.55, adjusted p = 0.005) and chromosome 4 at 29.5 cM, at marker D4Mit164 (LOD 8.09, adjusted p displayed as 0.000). Both provide statistically significant evidence of a blood-pressure QTL, with substantially stronger evidence on chromosome 4.
+
+The displayed p-value of 0.000 reflects the finite permutation resolution and output rounding; it should not be interpreted as an exact probability of zero. No other chromosome peak meets the genome-wide 5% threshold.
+
+The earlier LOD cutoff of 3 was a descriptive reporting filter. In contrast, LOD 2.65 is estimated from the permutation distribution of genome-wide maximum LOD scores and accounts for searching across the genome.
