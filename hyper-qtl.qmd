@@ -600,3 +600,29 @@ Based on 1,000 Haley–Knott permutations, the estimated genome-wide 5% signific
 The displayed p-value of 0.000 reflects the finite permutation resolution and output rounding; it should not be interpreted as an exact probability of zero. No other chromosome peak meets the genome-wide 5% threshold.
 
 The earlier LOD cutoff of 3 was a descriptive reporting filter. In contrast, LOD 2.65 is estimated from the permutation distribution of genome-wide maximum LOD scores and accounts for searching across the genome.
+
+## 8. Fit and refine a two-QTL model
+
+### 8.1 Define the initial QTL locations
+
+The initial locations are chromosome 1 at 48.3 cM and chromosome 4 at 29.5 cM. If a requested position is absent from the calculation grid, the nearest available position is used.
+
+```{r}
+#| label: make-two-qtls
+
+qc <- c(1, 4)
+qp <- c(48.3, 29.5)
+
+qtl_model <- makeqtl(
+  hyper_imput,
+  chr = qc,
+  pos = qp,
+  what = "draws"
+)
+
+qtl_model
+```
+
+**Observation**
+
+The initial two-QTL object contains Q1 on chromosome 1 at 49.2 cM and Q2 on chromosome 4 at 29.5 cM, using 16 genotype imputations. The requested chromosome 1 position of 48.3 cM was mapped to the nearest available imputation-grid position, 49.2 cM. These returned positions will serve as the starting points for model fitting and refinement.
