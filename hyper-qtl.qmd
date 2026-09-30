@@ -398,3 +398,17 @@ plotMap(hyper_est, newmap)
 **Observations**
 
 Re-estimating the genetic map while keeping marker order fixed changes the distances between markers. The most pronounced expansion occurs on chromosomes 6, 13, and 18: their total lengths increase approximately from 85 to 120 cM, 70 to 115 cM, and 45 to 80 cM, respectively. Chromosome 11 also expands visibly, from approximately 75 to 115 cM. The connecting lines show that changes in spacing are uneven across each chromosome.
+
+## 5. Identify possible genotyping errors
+
+```{r}
+#| label: error-lod
+
+hyper_err_lod <- calc.errorlod(hyper_est, error.prob = 0.01)
+
+top.errorlod(hyper_err_lod)
+```
+
+**Observations**
+
+The analysis flagged 128 genotype calls across 22 markers on chromosomes 1, 11, 15, 16, and 17. The highest error LOD scores occurred at D11Mit79 in individuals 152 and 144 (13.36 and 13.18), followed by D1Mit14 in individuals 118, 159, 162, and 170 (13.11 each). Several marker pairs were flagged in the same individuals; notably, D16Mit106 and D16Mit70 were both flagged in individuals 16, 23, 29, 31, 38, 40, 45, and 87. These repeated patterns indicate genotype inconsistencies that require inspection alongside neighboring markers and their map positions. High error LOD scores identify possible errors, but do not confirm incorrect calls, because genuine recombination between very tightly linked markers can also produce high scores.
