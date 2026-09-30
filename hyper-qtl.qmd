@@ -442,3 +442,12 @@ hyper_genoprob <- calc.genoprob(
   error.prob = 0.01
 )
 ```
+
+### 6.2 EM and Haley–Knott scans
+
+```{r}
+#| label: em-hk-scans
+
+out.em <- scanone(hyper_genoprob, pheno.col = "bp", method = "em")
+out.hk <- scanone(hyper_genoprob, pheno.col = "bp", method = "hk")
+```
