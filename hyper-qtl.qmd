@@ -554,3 +554,20 @@ All three methods identify the strongest genome-wide peak on chromosome 4 at 29.
 The curves largely overlap, particularly around the chromosome 4 peak. Small differences may reflect the methods’ different treatment of genotype uncertainty, the 1 cM versus 2 cM calculation grids, and simulation variability from the 16 imputation draws. Chromosome 15 shows a weaker signal; its EM peak is LOD 1.77 at 19.5 cM, and none of the three methods reports a chromosome 15 peak above the reporting threshold of 3.
 
 These results prioritize chromosomes 4 and 1 for further investigation. However, LOD \> 3 is only the reporting cutoff used here; genome-wide statistical significance must be assessed using the permutation thresholds in the next section.
+
+## 7. Genome-wide significance
+
+### 7.1 Run Haley–Knott permutation tests
+
+```{r}
+#| label: hk-permutations
+
+set.seed(20260929)
+
+operm.hk <- scanone(
+  hyper_genoprob,
+  pheno.col = "bp",
+  method = "hk",
+  n.perm = 1000
+)
+```
